@@ -103,6 +103,7 @@ import {
     TuiTagModule,
     TuiTextAreaModule,
     TuiToggleModule,
+    TuiRatingModule,
 } from '@taiga-ui/kit';
 
 import * as icons from '@taiga-ui/icons';
@@ -276,6 +277,7 @@ import {RouterModule} from '@angular/router';
         TuiBarModule,
         TuiCurrencyPipeModule,
         TuiProjectClassModule,
+        TuiRatingModule,
         TuiFilterByInputPipeModule,
         RouterModule.forRoot([])
     ],
