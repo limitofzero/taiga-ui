@@ -42,27 +42,15 @@
             </button>
         </div>
 
-        <ng-container
-            *ngIf="{
-                activeTab: tabs[activeItemIndex],
-                code: content[tabs[activeItemIndex]] || ''
-            } as state"
-        >
-            <div
-                *ngIf="state.activeTab == defaultTab; else codeSection"
-                automation-id="tui-doc-example"
-                class="t-demo"
+        <!-- dynamic re-render tab content in runtime for trigger css animation -->
+        <ng-container *ngFor="let tab of tabs; let index = index">
+            <tui-tab-content
+                *ngIf="index === activeItemIndex"
+                [code]="content[tabs[activeItemIndex]]"
+                [isPreview]="tabs[activeItemIndex] === defaultTab"
             >
                 <ng-content></ng-content>
-            </div>
-
-            <ng-template #codeSection>
-                <tui-doc-copy
-                    class="t-copy-code"
-                    [cdkCopyToClipboard]="state.code"
-                ></tui-doc-copy>
-                <tui-doc-code [code]="state.code"></tui-doc-code>
-            </ng-template>
+            </tui-tab-content>
         </ng-container>
     </ng-container>
 </div>
