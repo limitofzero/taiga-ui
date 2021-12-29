@@ -1,4 +1,7 @@
 <p *ngIf="filename" class="t-header">{{filename}}</p>
-<pre
-    class="t-code"
-><code [lineNumbers]="true" [highlight]="processor$ | async"></code></pre>
+<ng-container *ngFor="let block of processor$ | async; let count = count">
+    <pre
+        class="t-code"
+    ><code [lineNumbers]="true" [highlight]="block.content"></code></pre>
+    <br *ngIf="count > 1" />
+</ng-container>
